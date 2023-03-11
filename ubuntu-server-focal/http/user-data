@@ -3,7 +3,7 @@ autoinstall:
   version: 1
   locale: en_US
   keyboard:
-    layout: de
+    layout: es
   ssh:
     install-server: true
     allow-pw: true
@@ -22,12 +22,12 @@ autoinstall:
     package_upgrade: false
     timezone: Europe/Berlin
     users:
-      - name: your-user-name
+      - name: antonio
         groups: [adm, sudo]
         lock-passwd: false
         sudo: ALL=(ALL) NOPASSWD:ALL
         shell: /bin/bash
         # passwd: your-password
         # - or -
-        # ssh_authorized_keys:
-        #   - your-ssh-key
+        ssh_authorized_keys:
+          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJrkDXv3a959SkFWTlJkstLeGQMDFoH9kPLJ+JVh6H4cvcF+4MO8C1gLEzMeSKLLXlIYilZvRvztWaOJozRdgXPeCF1nzv1TfD7sTvMdcPmgtZPVRvD7SlsyMV0VC2BxsIwf8s8SkFWBmqV3jWxHXe81ZBYNYiTKWXIhYIhkTYqcKDTx3Zay3n153VCb4TCGhI+H1xaVJ9Sx8T10xJrPZ0ggbtIi/kgAo9vq5oTvSpCLsZEWcRv2WK2AEMO3pRUcDlx0p3XldRtScyUwUD22QPpt+ueCP/jV4HMBpz4srU6+BaKTR0gA5ifP74wKZB69CUpzZjV2OGQuHN429kKy9upm288MXAhw/D5nMBUVs6/NwXSheiX4lHCyzOtchBeIUPeD/RrWIo20ZkKEBicJTby+m/3Ugl6vs58Eeyht6YsMBSsyLVkX/ke+tHiUE0S7+1unxU8ZIY5StVeIrOsp8+NI98JJSZ3ryU7RhgCUX7FMJFLxerBiARM4mhLquasFE= antonio@portatil-antonio
