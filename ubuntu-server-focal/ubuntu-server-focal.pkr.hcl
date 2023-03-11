@@ -17,7 +17,7 @@ variable "proxmox_api_token_secret" {
 }
 
 # Resource Definiation for the VM Template
-source "proxmox" "ubuntu-server-focal" {
+source "proxmox" "ubuntu-server-focal-test-1" {
  
     # Proxmox Connection Settings
     proxmox_url = "${var.proxmox_api_url}"
@@ -29,12 +29,12 @@ source "proxmox" "ubuntu-server-focal" {
     # VM General Settings
     node = "torre-linux"
     vm_id = "103"
-    vm_name = "ubuntu-server-focal"
+    vm_name = "ubuntu-server-focal-test-1"
     template_description = "Ubuntu Server Focal Image"
 
     # VM OS Settings
     # (Option 1) Local ISO File
-    iso_file = "local:iso/ubuntu-20.04.1-live-server-amd64.iso"
+    iso_file = "local:iso/ubuntu-20.04.2-live-server-amd64.iso"
     # - or -
     # (Option 2) Download ISO
     # iso_url = "https://releases.ubuntu.com/20.04/ubuntu-20.04.3-live-server-amd64.iso"
@@ -51,7 +51,7 @@ source "proxmox" "ubuntu-server-focal" {
     disks {
         disk_size = "10G"
         format = "qcow2"
-        storage_pool = "local-lvm"
+        storage_pool = "local"
         storage_pool_type = "lvm"
         type = "virtio"
     }
@@ -87,7 +87,7 @@ source "proxmox" "ubuntu-server-focal" {
     # PACKER Autoinstall Settings
     http_directory = "http" 
     # (Optional) Bind IP Address and Port
-    http_bind_address = "10.10.1.23"
+    http_bind_address = "172.29.144.1"
     http_port_min = 8802
     http_port_max = 8802
 
@@ -106,8 +106,8 @@ source "proxmox" "ubuntu-server-focal" {
 # Build Definition to create the VM Template
 build {
 
-    name = "ubuntu-server-focal"
-    sources = ["source.proxmox.ubuntu-server-focal"]
+    name = "ubuntu-server-focal-test-1"
+    sources = ["source.proxmox.ubuntu-server-focal-test-1"]
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
     provisioner "shell" {
