@@ -91,7 +91,7 @@ source "proxmox" "ubuntu-server-focal-test-1" {
     http_port_min = 8802
     http_port_max = 8802
 
-    ssh_username = "antonio"
+    ssh_username = "anton"
 
     # (Option 1) Add your Password here
     # ssh_password = "your-password"
@@ -123,18 +123,4 @@ build {
             "sudo sync"
         ]
     }
-
-    # Provisioning the VM Template for Cloud-Init Integration in Proxmox #2
-    provisioner "file" {
-        source = "files/99-pve.cfg"
-        destination = "/tmp/99-pve.cfg"
-    }
-
-    # Provisioning the VM Template for Cloud-Init Integration in Proxmox #3
-    provisioner "shell" {
-        inline = [ "sudo cp /tmp/99-pve.cfg /etc/cloud/cloud.cfg.d/99-pve.cfg" ]
-    }
-
-    # Add additional provisioning scripts here
-    # ...
 }
