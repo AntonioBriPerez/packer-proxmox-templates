@@ -87,7 +87,7 @@ source "proxmox" "ubuntu-server-focal-test-1" {
     # PACKER Autoinstall Settings
     http_directory = "http" 
     # (Optional) Bind IP Address and Port
-    http_bind_address = "172.29.144.1"
+    http_bind_address = "192.168.18.6"
     http_port_min = 8802
     http_port_max = 8802
 
