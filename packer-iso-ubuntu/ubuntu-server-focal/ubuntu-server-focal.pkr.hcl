@@ -60,12 +60,11 @@ source "proxmox" "ubuntu-server" {
     node = "${var.pm_node}"
     vm_id = "${var.vm_id}"
     vm_name = "${var.vm_name}"
-    template_description = "Built on Packer"
+    template_description = "Built on Packer Ubuntu 22"
 
     # VM OS settings
     iso_file = "${var.iso_file}"
     #   You can also download an ISO
-    iso_url = "https://releases.ubuntu.com/22.04/ubuntu-22.04-live-server-amd64.iso"
     #iso_checksum = "84aeaf7823c8c61baa0ae862d0a06b03409394800000b3235854a6b38eb4856f"
     #iso_storage_pool = "local"
     unmount_iso = true
@@ -76,18 +75,19 @@ source "proxmox" "ubuntu-server" {
     cores = "2"
     memory = "2048"
     disks {
-        disk_size = "32G"
-        format = "raw"
-        storage_pool = "${var.pm_storage_pool}"
-        storage_pool_type = "${var.pm_storage_pool_type}"
-        type = "sata"
+        disk_size = "30G"
+        format = "qcow2"
+        storage_pool = "local"
+        storage_pool_type = "lvm"
+        type = "virtio"
     }
+
     network_adapters {
         model = "virtio"
         bridge = "vmbr0"
         firewall = "false"
-        #vlan_tag = "1"
-    }
+    } 
+
 
     # Configure Cloud-Init settings
     cloud_init = true
@@ -131,7 +131,7 @@ source "proxmox" "ubuntu-server" {
     ssh_username = "${var.ssh_username}"
     ssh_password = "${var.ssh_password}"
     #ssh_private_key_file = "${var.ssh_private_key_file}"
-    ssh_timeout = "20m"
+    ssh_timeout = "25m"
 }
 
 build {

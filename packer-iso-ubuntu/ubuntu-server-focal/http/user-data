@@ -9,6 +9,13 @@ autoinstall:
     allow-pw: true
   packages:
     - qemu-guest-agent
+    - openssh-server
+    - open-vm-tools
+    - cloud-init
+    - whois
+    - zsh
+    - wget
+    - sudo
   storage:
     layout:
       name: direct
