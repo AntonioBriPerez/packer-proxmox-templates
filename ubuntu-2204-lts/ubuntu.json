@@ -1,6 +1,6 @@
 {
     "variables": {
-        "proxmox_vm_id": "200",
+        "proxmox_vm_id": "201",
         "proxmox_template_name": "ubuntu-22.04",
         "ubuntu_iso_file": "ubuntu-22.04.2-live-server-amd64.iso"
     },
@@ -33,11 +33,25 @@
             "template_name": "{{ user `proxmox_template_name` }}",
             "http_directory": "http",
             "boot_command": [
-                "c",
-                "linux /casper/vmlinuz --- autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/' ",
-                "<enter><wait>",
+                "<esc><esc><esc><esc>e<wait>",
+                "<del><del><del><del><del><del><del><del>",
+                "<del><del><del><del><del><del><del><del>",
+                "<del><del><del><del><del><del><del><del>",
+                "<del><del><del><del><del><del><del><del>",
+                "<del><del><del><del><del><del><del><del>",
+                "<del><del><del><del><del><del><del><del>",
+                "<del><del><del><del><del><del><del><del>",
+                "<del><del><del><del><del><del><del><del>",
+                "<del><del><del><del><del><del><del><del>",
+                "<del><del><del><del><del><del><del><del>",
+                "<del><del><del><del><del><del><del><del>",
+                "<del><del><del><del><del><del><del><del>",
+                "<del><del><del><del><del><del><del><del>",
+                "<del><del><del><del><del><del><del><del>",
+                "linux /casper/vmlinuz --- autoinstall ds=\"nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/\"<enter><wait>",
                 "initrd /casper/initrd<enter><wait>",
-                "boot<enter>"
+                "boot<enter>",
+                "<enter><f10><wait>"
             ],
             "ssh_username": "anton",
             "ssh_password": "anton",
