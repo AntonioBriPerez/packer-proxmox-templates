@@ -77,8 +77,8 @@ source "proxmox" "ubuntu-server" {
     disks {
         disk_size = "30G"
         format = "qcow2"
-        storage_pool = "${var.pm_storage_pool}"
-        storage_pool_type = "${pm_storage_pool_type}"
+        storage_pool = "local"
+        storage_pool_type = "lvm"
         type = "virtio"
     }
 
@@ -130,7 +130,7 @@ source "proxmox" "ubuntu-server" {
     ssh_port = 22
     ssh_username = "${var.ssh_username}"
     ssh_password = "${var.ssh_password}"
-    #ssh_private_key_file = "${var.ssh_private_key_file}"
+    ssh_private_key_file = "${var.ssh_private_key_file}"
     ssh_timeout = "25m"
 }
 
