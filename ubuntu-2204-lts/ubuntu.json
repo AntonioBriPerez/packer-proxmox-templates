@@ -39,8 +39,8 @@
                 "initrd /casper/initrd<enter><wait>",
                 "boot<enter>"
             ],
-            "ssh_username": "madalynn",
-            "ssh_password": "madalynn",
+            "ssh_username": "anton",
+            "ssh_password": "anton",
             "ssh_timeout": "25m"
         }
     ],
