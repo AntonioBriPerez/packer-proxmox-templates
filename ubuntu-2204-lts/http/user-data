@@ -1,0 +1,37 @@
+#cloud-config
+autoinstall:
+  version: 1
+  locale: en_US
+  keyboard:
+    layout: es
+  ssh:
+    install-server: true
+    allow-pw: true
+    disable_root: true
+    ssh_quiet_keygen: true
+    allow_public_ssh_keys: true
+  packages:
+    - qemu-guest-agent
+    - openssh-server
+    - sudo
+  late-commands:
+    - curtin in-target --target=/target -- systemctl start qemu-guest-agent
+    - curtin in-target --target=/target -- systemctl enable qemu-guest-agent
+  storage:
+    layout:
+      name: direct
+    swap:
+      size: 0
+  user-data:
+    package_upgrade: false
+    timezone: Europe/Berlin
+    users:
+      - name: anton
+        groups: [adm, sudo]
+        lock-passwd: false
+        sudo: ALL=(ALL) NOPASSWD:ALL
+        shell: /bin/bash
+        # passwd: your-password
+        # - or -
+        ssh_authorized_keys:
+          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDUROBj7W+Sr0PswetL6uPc6l/BVcJnprAktesDetJK16TxPp0jqoxKsKAJT+6jkcF5krcvB9xGkzsYpBEB0ZhBM2hrXfLHk8GPQwLX/5xMB7k77maaMr1eAQj+bxCkvFCxynx7PecAm0x0gt2mm0hoywpNLCXoSzaqc9SGR0WSdXOz/5QVZmWQhRBoENop+x9XSYzlV/BTlEwMbhxbNE7sLD0lUWKci8rkg6Nstr6q+pp0UXxjn0j2H+5o8EZPVb3KeyuAbQOAZ4YZhOcpdC7U+ysV6l/wCI9IwAHbKwRUt62h+AyzlLfH/phlzSw1wWxPRfTa6xP+NAYIyT1G7GBd9e5qblRDUHwJQAYV7Mr997Pm3+5f4+o2N5BwwGQGAE72rkTyn75ALgBit4L6UQlkD/tNxM4YDQQ4bJ8cEURdOLumyUXelDnisC4qmHMMzUEjqvwMbqTJ6616oY5O9oO/amwOYK08O5KlO/ovMQpG07jg0gJgv+u4gV82jcUTAe8= anton@portatil-antonio
