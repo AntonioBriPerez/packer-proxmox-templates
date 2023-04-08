@@ -77,8 +77,8 @@ source "proxmox" "ubuntu-server" {
     disks {
         disk_size = "30G"
         format = "qcow2"
-        storage_pool = "local"
-        storage_pool_type = "lvm"
+        storage_pool = "${var.pm_storage_pool}"
+        storage_pool_type = "${pm_storage_pool_type}"
         type = "virtio"
     }
 
